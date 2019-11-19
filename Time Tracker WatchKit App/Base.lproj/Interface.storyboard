@@ -1,15 +1,100 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11134" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="15505" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11055"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="15501"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Time_Tracker_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <label alignment="left" text="Hoje: 3h 44m" id="8Jh-qj-AYA"/>
+                        <label alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="0" id="wfv-ET-lWQ">
+                            <string key="text">Today 
+3h 44m</string>
+                            <fontDescription key="font" style="UICTFontTextStyleTitle1"/>
+                        </label>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Go Horse!" id="YGS-Fr-dj4">
+                            <connections>
+                                <action selector="inOutTapped" destination="AgC-eL-Hgc" id="urg-fM-L8v"/>
+                            </connections>
+                        </button>
+                        <separator alignment="center" verticalAlignment="bottom" alpha="0.0" id="KrY-07-DnC"/>
+                    </items>
+                    <menu key="menu" id="mFU-k9-Kr0">
+                        <items>
+                            <menuItem title="Hitórico" icon="info" id="HFl-Ss-hjv">
+                                <connections>
+                                    <action selector="historyTapped" destination="AgC-eL-Hgc" id="TUD-2i-f4a"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Limpar" icon="trash" id="p0y-Ff-5jT">
+                                <connections>
+                                    <action selector="resetAllTapped" destination="AgC-eL-Hgc" id="ulm-MT-mYB"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="inOutButton" destination="YGS-Fr-dj4" id="RXn-Xz-YF8"/>
+                        <outlet property="middleLabel" destination="wfv-ET-lWQ" id="YM2-az-ttu"/>
+                        <outlet property="topLabel" destination="8Jh-qj-AYA" id="JIG-Im-QRD"/>
+                    </connections>
+                </controller>
             </objects>
+            <point key="canvasLocation" x="138" y="117"/>
+        </scene>
+        <!--history-->
+        <scene sceneID="rOg-8j-F6g">
+            <objects>
+                <controller identifier="history" id="hul-9W-foL" customClass="HistoryInterfaceController" customModule="Time_Tracker_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="7sj-58-JHm">
+                            <items>
+                                <tableRow identifier="InOutRow" id="ZZD-7y-Ruh" customClass="ClockInAndOutRowController" customModule="Time_Tracker_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="wEU-xf-h2E">
+                                        <items>
+                                            <label width="1" height="1" alignment="center" verticalAlignment="center" text="Label" id="9lz-xC-hKr"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="label" destination="9lz-xC-hKr" id="ryh-tx-qA5"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="7sj-58-JHm" id="C0y-kL-pyn"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="388" y="117"/>
+        </scene>
+        <!--timeDetail-->
+        <scene sceneID="sbe-1v-shK">
+            <objects>
+                <controller identifier="timeDetail" id="1Zj-tN-mXx" customClass="DetailInterfaceController" customModule="Time_Tracker_WatchKit_Extension">
+                    <items>
+                        <label alignment="left" text="Hora de início" id="zhr-5R-EbE"/>
+                        <label alignment="left" text="Aug 5th 4:32pm" minimumScaleFactor="0.5" id="O0R-j2-HPA">
+                            <fontDescription key="font" style="UICTFontTextStyleTitle2"/>
+                        </label>
+                        <label alignment="left" text="Hora de saída" id="4mr-Bu-TDB"/>
+                        <label alignment="left" text="Aug 5th 4:50pm" minimumScaleFactor="0.5" id="ZVo-f7-QdM">
+                            <fontDescription key="font" style="UICTFontTextStyleTitle2"/>
+                        </label>
+                    </items>
+                    <connections>
+                        <outlet property="clockInLabel" destination="O0R-j2-HPA" id="Tj5-qX-X6f"/>
+                        <outlet property="clockOutLabel" destination="ZVo-f7-QdM" id="GC8-Bc-3nQ"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="639" y="117"/>
         </scene>
     </scenes>
 </document>
